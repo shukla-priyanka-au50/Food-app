@@ -15,3 +15,30 @@ function Atoi(str, n)
     let n = str.length;
       
    console.log(myAtoiRecursive(str, n));
+
+
+
+
+
+
+function lagr(num) {
+  let maxPrie = -1;
+  while (num%2 == 0){
+    maxPrie = 2;
+    num /= 2;
+  }
+  for(let i = 3; i<= Math.sqrt(num); i += 2){
+    while(num%i == 0){
+      maxPrie = i;
+      num /= i
+    }
+  }
+  if(num > 2){
+    maxPrie = num
+  }
+  return maxPrie
+}
+
+
+
+console.log(lagr(13195))
