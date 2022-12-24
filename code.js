@@ -41,4 +41,43 @@ function lagr(num) {
 
 
 
+
+
+
 console.log(lagr(13195))
+
+
+
+
+
+
+function highestValuePalindrome(s, n, k) {
+    s = s.split('');
+    for (let i = 0; i < n / 2; i++) {
+        if (s[i] !== s[n - i - 1]) {
+            if (k > 0) {
+                s[i] = s[n - i - 1];
+                k--;
+            } else {
+                if (s[i] !== '9' && s[n - i - 1] !== '9') {
+                    return -1;
+                } else if (s[i] === '9' || s[n - i - 1] === '9') {
+                    k--;
+                }
+            }
+        }
+    }
+    for (let i = 0; i < n / 2; i++) {
+        if (k > 0) {
+            if (s[i] !== '9') {
+                s[i] = '9';
+                s[n - i - 1] = '9';
+                k -= 2;
+            }
+        }
+    }
+    if (n % 2 === 1 && k > 0) {
+        s[Math.floor(n / 2)] = '9';
+    }
+    return s.join('');
+}
